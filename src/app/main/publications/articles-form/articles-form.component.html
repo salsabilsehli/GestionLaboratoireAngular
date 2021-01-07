@@ -1,0 +1,35 @@
+<div class="container">
+
+  <h4>{{isFormInEditMode() ? 'Edit Article' : 'Create New Article'}}</h4>
+
+  <form [formGroup]="form" *ngIf="!!form" (ngSubmit)="onSubmit()" class="form" fxLayout="column">
+
+    <mat-form-field style="width:10vw">
+      <input matInput [matDatepicker]="picker" placeholder="choisir une date .." formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="titre" formControlName="titre">
+    </mat-form-field>
+
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="lien" formControlName="lien">
+    </mat-form-field>
+
+
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="type" formControlName="type">
+    </mat-form-field>
+
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="source pdf" formControlName="sourcepdf">
+    </mat-form-field>
+
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="form.invalid">Sauvgarder</button>
+    </div>
+
+  </form>
+</div>

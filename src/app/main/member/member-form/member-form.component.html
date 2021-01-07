@@ -1,0 +1,47 @@
+<div class="container">
+
+  <h4>{{isFormInEditMode() ? 'Edit Member' : 'Create New Member'}}</h4>
+
+  <form [formGroup]="form" *ngIf="!!form" (ngSubmit)="onSubmit()" class="form" fxLayout="column">
+
+
+    <mat-form-field style="width:10vw">
+      <input matInput [matDatepicker]="picker" placeholder="choisir une date .." formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="cin" formControlName="cin">
+    </mat-form-field>
+
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="nom" formControlName="nom">
+    </mat-form-field>
+
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="prenom" formControlName="prenom">
+    </mat-form-field>
+    <mat-form-field style="width:30vw">
+    <input matInput placeholder="photo" formControlName="photo">
+    </mat-form-field>
+
+    <mat-form-field style="width:30vw">
+      <input matInput placeholder="cv" formControlName="cv">
+    </mat-form-field>
+
+
+
+    <div class="form-element" *ngIf="isFormInEditMode()==false">
+      Selectionnez le type du membre
+      <br>
+      <select [(ngModel)]="selectedOption" formControlName="typembr"  style="width:30vw;height: 3vw">
+        <option  *ngFor="let t of typeMember" [ngValue]="t.id">{{t.name}}</option>
+      </select>
+    </div>
+<br>
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="form.invalid">Sauvgarder</button>
+    </div>
+
+  </form>
+</div>
